@@ -1,116 +1,30 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { Button, FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
+import Login from './pages/login';
+import Signup from './pages/signup';
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
 
-  const stack = createNativeStackNavigator()
+  const [loggedIn, setLoggedIn] = useState(false)
 
   return (
-    <SafeAreaView style={styles.hero_container}>
-      <View style={styles.container}>
-        <Image
-          source={require('./assets/sima/logosima.png')}/>
-        <Text style={styles.welcome}>Selamat datang di SIMA !</Text>
-        <View style={styles.input_field}>
-          <Text style={styles.input_hint}>Email</Text>
-          <TextInput
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholderTextColor="#d3d3d3"
-            style={styles.input}
-            placeholder='Masukkan email'/>
-        </View>
-        <View style={styles.input_field}>
-          <Text style={styles.input_hint}>Password</Text>
-          <TextInput
-            secureTextEntry={true}
-            placeholderTextColor="#d3d3d3"
-            style={styles.input}
-            placeholder='Masukkan password'/>
-        </View>
-        <TouchableOpacity style={{width: '100%'}}>
-          <Text
-            style={styles.text}>Lupa Password ?
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={{width: '100%'}}
-          onPress={() => alert('123')}>
-          <View style={styles.button_container}>
-            <Text style={styles.text_masuk}>Masuk</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={{flexDirection: 'row'}}>
-          <Text>
-            Tidak punya akun ? &nbsp;
-          </Text>
-          <TouchableOpacity>
-            <Text style={styles.text}>Daftar sekarang</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='login'>
+        <Stack.Group screenOptions={{
+            headerShown: false,
+            animation: 'none',
+          }}
+        >
+          <Stack.Screen name="login" component={Login}></Stack.Screen>
+          <Stack.Screen name="signup" component={Signup}></Stack.Screen>
+        </Stack.Group>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  hero_container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 20,
-    marginLeft: 24,
-    marginRight: 24,
-  },
-  text: {
-    fontSize: 16,
-    textAlign: 'right',
-    width: '100%',
-    color: '#E81255',
-  },
-  text_masuk: {
-    textAlign: 'center',
-    color: 'white',
-    fontWeight: 700,
-  },
-  button_container: {
-    backgroundColor: '#E81255',
-    padding: 15,
-    borderRadius: 12,
-  },
-  input: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: 'black',
-    width: '100%',
-    padding: 12,
-    borderRadius: 5,
-    borderColor: '#d3d3d3',
-  },
-  input_hint: {
-    width: '100%',
-    textAlign: 'left',
-    fontWeight: 600,
-    marginBottom: 12,
-  },
-  input_field: {
-    width: '100%'
-  },
-  welcome: {
-    width: '100%',
-    textAlign: 'left',
-    fontWeight: 700,
-    fontSize: 24,
-    marginTop: 32,
-    marginBottom: 32,
-  }
-});
