@@ -6,25 +6,25 @@ const Login = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.hero}>
                 <Image
-                source={require('../../assets/sima/logosima.png')}/>
+                  source={require('../../assets/sima/logosima.png')}/>
                 <Text style={styles.welcome}>Selamat datang di SIMA !</Text>
                 <View style={styles.input_field}>
-                <Text style={styles.input_hint}>Email</Text>
-                <TextInput
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    placeholderTextColor="#d3d3d3"
-                    style={styles.input}
-                    placeholder='Masukkan email'/>
+                  <Text style={styles.input_hint}>Email</Text>
+                  <TextInput
+                      keyboardType="email-address"
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      placeholderTextColor="#d3d3d3"
+                      style={styles.input}
+                      placeholder='Masukkan email'/>
                 </View>
                 <View style={styles.input_field}>
-                <Text style={styles.input_hint}>Password</Text>
-                <TextInput
-                    secureTextEntry={true}
-                    placeholderTextColor="#d3d3d3"
-                    style={styles.input}
-                    placeholder='Masukkan password'/>
+                  <Text style={styles.input_hint}>Password</Text>
+                  <TextInput
+                      secureTextEntry={true}
+                      placeholderTextColor="#d3d3d3"
+                      style={styles.input}
+                      placeholder='Masukkan password'/>
                 </View>
                 <TouchableOpacity style={{width: '100%'}}>
                 <Text
@@ -32,19 +32,19 @@ const Login = ({ navigation }) => {
                 </Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                style={{width: '100%'}}
-                onPress={() => alert('123')}>
-                <View style={styles.button_container}>
-                    <Text style={styles.text_masuk}>Masuk</Text>
-                </View>
+                  style={{width: '100%'}}
+                  onPress={() => alert('123')}>
+                  <View style={styles.button_container}>
+                      <Text style={styles.text_masuk}>Masuk</Text>
+                  </View>
                 </TouchableOpacity>
                 <View style={{flexDirection: 'row'}}>
-                <Text>
-                    Tidak punya akun ? &nbsp;
-                </Text>
-                <TouchableOpacity onPress={() => navigation.navigate('signup')}>
-                    <Text style={styles.text}>Daftar sekarang</Text>
-                </TouchableOpacity>
+                  <Text>
+                      Tidak punya akun ? &nbsp;
+                  </Text>
+                  <TouchableOpacity onPress={() => navigation.push('signup')}>
+                      <Text style={styles.text}>Daftar sekarang</Text>
+                  </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: 'white'
     },
     hero: {
       flex: 1,

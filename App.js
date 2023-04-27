@@ -6,6 +6,7 @@ import { Button, FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, Tou
 
 import Login from './pages/login';
 import Signup from './pages/signup';
+import Terms from './pages/signup/terms';
 
 const Stack = createNativeStackNavigator()
 
@@ -18,11 +19,12 @@ export default function App() {
       <Stack.Navigator initialRouteName='login'>
         <Stack.Group screenOptions={{
             headerShown: false,
-            animation: 'none',
+            animation: 'fade_from_bottom',
           }}
         >
           <Stack.Screen name="login" component={Login}></Stack.Screen>
           <Stack.Screen name="signup" component={Signup}></Stack.Screen>
+          <Stack.Screen name="terms" component={Terms}></Stack.Screen>
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
