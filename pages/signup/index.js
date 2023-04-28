@@ -1,5 +1,5 @@
-import { atom, useAtom } from "jotai"
-import { useState } from "react"
+import { atom, useSetAtom } from "jotai"
+import { useEffect, useState } from "react"
 import { Image, Text, TouchableOpacity, View } from "react-native"
 import { StyleSheet, Picker } from "react-native"
 import DropDownPicker from "react-native-dropdown-picker"
@@ -9,7 +9,8 @@ export const countryAtom = atom(null)
 
 const Signup = ({ navigation }) => {
 
-    const [country, setCountry] = useAtom(countryAtom)
+    const setCountry = useSetAtom(countryAtom)
+    const [value, setValue] = useState(null)
     const [open, setOpen] = useState(false)
     const [items, setItems] = useState([
         {
@@ -25,60 +26,93 @@ const Signup = ({ navigation }) => {
     ])
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.hero}>
-                <Image
-                  source={require('../../assets/sima/logosima.png')}/>
-                <Text style={styles.kewarganegaraan}>Pilih Kewarganegaraan</Text>
-                <Text style={styles.redaksi}>
-                    Silakan pilih negara anda untuk menentukan ID dokumen mana yang akan dipindai. ID dokumen diperlukan untuk memvalidasi identitas anda. 
-                </Text>
-                <View style={styles.control_container}>
-                    <DropDownPicker
-                        placeholderStyle={{
-                            color: '#d3d3d3'
-                        }}
-                        placeholder="Pilih Kewarganegaraan"
-                        style={styles.input}
-                        open={open}
-                        value={country}
-                        items={items}
-                        setOpen={setOpen}
-                        setValue={setCountry}
-                        setItems={setItems}
-                    />
-                    <TouchableOpacity 
-                        disabled={!country}
-                        onPress={() => navigation.push('terms')}
-                        style={country ? styles.button : [styles.button, styles.button_disabled]}>
-                        <Text style={styles.button_label}>Lanjutkan</Text>
-                    </TouchableOpacity>
-                </View>
+        // <SafeAreaView style={styles.container}>
+        //     <View style={styles.hero}>
+        //         <Image
+        //           source={require('../../assets/sima/logosima.png')}/>
+        //         <Text style={styles.kewarganegaraan}>Pilih Kewarganegaraan</Text>
+        //         <Text style={styles.redaksi}>
+        //             Silahkan pilih negara anda untuk menentukan ID dokumen mana yang akan dipindai. ID dokumen diperlukan untuk memvalidasi identitas anda. 
+        //         </Text>
+        //         <View style={styles.control_container}>
+        //             <DropDownPicker
+        //                 placeholderStyle={{
+        //                     color: '#d3d3d3'
+        //                 }}
+        //                 placeholder="Pilih Kewarganegaraan"
+        //                 style={styles.input}
+        //                 open={open}
+        //                 value={value}
+        //                 items={items}
+        //                 setOpen={setOpen}
+        //                 setValue={setValue}
+        //                 setItems={setItems}
+        //                 onSelectItem={item => setCountry(item.value)}
+        //             />
+        //             <TouchableOpacity 
+        //                 disabled={!value}
+        //                 onPress={() => navigation.push('terms')}
+        //                 style={value ? styles.button : [styles.button, styles.button_disabled]}>
+        //                 <Text style={styles.button_label}>Lanjutkan</Text>
+        //             </TouchableOpacity>
+        //         </View>
+        //     </View>
+        // </SafeAreaView>
+        <View style={styles.hero}>
+            <Image
+                source={require('../../assets/sima/logosima.png')}/>
+            <Text style={styles.kewarganegaraan}>Pilih Kewarganegaraan</Text>
+            <Text style={styles.redaksi}>
+                Silahkan pilih negara anda untuk menentukan ID dokumen mana yang akan dipindai. ID dokumen diperlukan untuk memvalidasi identitas anda. 
+            </Text>
+            <View style={styles.control_container}>
+                <DropDownPicker
+                    placeholderStyle={{
+                        color: '#d3d3d3'
+                    }}
+                    placeholder="Pilih Kewarganegaraan"
+                    style={styles.input}
+                    open={open}
+                    value={value}
+                    items={items}
+                    setOpen={setOpen}
+                    setValue={setValue}
+                    setItems={setItems}
+                    onSelectItem={item => setCountry(item.value)}
+                />
+                <TouchableOpacity 
+                    disabled={!value}
+                    onPress={() => navigation.push('terms')}
+                    style={value ? styles.button : [styles.button, styles.button_disabled]}>
+                    <Text style={styles.button_label}>Lanjutkan</Text>
+                </TouchableOpacity>
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
+        backgroundColor: 'gold',
     },
 
     hero: {
-        position: 'relative',
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         gap: 12,
-        marginLeft: 24,
-        marginRight: 24,
-        marginTop: '20%',
-        marginBottom: '20%',
+        paddingLeft: 24,
+        paddingRight: 24,
+        paddingBottom: '15%',
+        paddingTop: '15%',
+        backgroundColor: 'white',
+        // backgroundColor: 'brown',
     },
 
     kewarganegaraan: {
