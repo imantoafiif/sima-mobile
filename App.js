@@ -7,6 +7,7 @@ import { Button, FlatList, Image, Platform, SafeAreaView, StyleSheet, Text, Text
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Identity from './pages/signup/identity';
+import Personal from './pages/signup/personal';
 import Terms from './pages/signup/terms';
 
 const Stack = createNativeStackNavigator()
@@ -18,7 +19,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+      <StatusBar backgroundColor="#fff" style='dark' />
       <Stack.Navigator initialRouteName='login'>
         <Stack.Group screenOptions={{
             headerTitleAlign: 'center',
@@ -34,6 +35,7 @@ export default function App() {
           <Stack.Screen name="signup" component={Signup} options={{ title: 'Nationality' }}></Stack.Screen>
           <Stack.Screen name="terms" component={Terms} options={{ title: 'Terms' }}></Stack.Screen>
           <Stack.Screen name="identity" component={Identity} options={{ title: 'Identity' }}></Stack.Screen>
+          <Stack.Screen name="personal" component={Personal} options={{ title: 'Personal Data' }}></Stack.Screen>
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

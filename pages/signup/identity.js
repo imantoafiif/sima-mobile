@@ -1,14 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
-import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
+import { Image, Platform, SafeAreaView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
 import * as DocumentPicker from 'expo-document-picker';
 import { atom, useSetAtom } from "jotai";
 
 export const identityAtom = atom(null)
+const platform = Platform.OS
 
 const Identity = ({ navigation }) => {
 
     useEffect(() => {
         setIdentity(selectedFile?.uri)
+        console.log(selectedFile?.size)
     }, [selectedFile])
 
 
@@ -29,6 +31,7 @@ const Identity = ({ navigation }) => {
             // );
             } catch (err) {
             if (DocumentPicker.isCancel(err)) {
+                setSelectedFile(null)
                 console.warn(err)
             } else {
                 console.warn(err)
@@ -97,6 +100,7 @@ const Identity = ({ navigation }) => {
                     </View> */}
                 </View>
                 <TouchableOpacity
+                    onPress={() => navigation.navigate('personal')}
                     style={selectedFile ? styles.button : [styles.button, styles.button_disabled]}>
                     <Text style={styles.button_label}>Lanjutkan</Text>
                 </TouchableOpacity>
@@ -122,8 +126,7 @@ const styles = StyleSheet.create({
         gap: 12,
         paddingLeft: 24,
         paddingRight: 24,
-        paddingBottom: '15%',
-        paddingTop: '15%',
+        paddingVertical: (platform === 'ios' ? '10%' : '20%'),
         backgroundColor: 'white',
         // backgroundColor: 'brown',
     },

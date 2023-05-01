@@ -1,9 +1,11 @@
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useAtomValue } from "jotai"
 import { useState } from "react"
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
+import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { countryAtom } from "."
+
+const platform = Platform.OS
 
 const Terms = ({ navigation }) => {
 
@@ -84,8 +86,7 @@ const styles = StyleSheet.create({
         gap: 12,
         paddingLeft: 24,
         paddingRight: 24,
-        paddingBottom: '15%',
-        paddingTop: '15%',
+        paddingVertical: (platform === 'ios' ? '10%' : '20%'),
         backgroundColor: 'white',
         // backgroundColor: 'brown',
     },

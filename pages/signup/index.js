@@ -1,11 +1,13 @@
 import { atom, useSetAtom } from "jotai"
 import { useEffect, useState } from "react"
+import { Platform } from "react-native"
 import { Image, Text, TouchableOpacity, View } from "react-native"
 import { StyleSheet, Picker } from "react-native"
 import DropDownPicker from "react-native-dropdown-picker"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 export const countryAtom = atom(null)
+const platform = Platform.OS
 
 const Signup = ({ navigation }) => {
 
@@ -109,8 +111,7 @@ const styles = StyleSheet.create({
         gap: 12,
         paddingLeft: 24,
         paddingRight: 24,
-        paddingBottom: '15%',
-        paddingTop: '15%',
+        paddingVertical: (platform === 'ios' ? '10%' : '20%'),
         backgroundColor: 'white',
         // backgroundColor: 'brown',
     },
