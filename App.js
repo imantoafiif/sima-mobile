@@ -4,11 +4,11 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, FlatList, Image, Platform, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import Login from './pages/login';
-import Signup from './pages/signup';
-import Identity from './pages/signup/identity';
-import Personal from './pages/signup/personal';
-import Terms from './pages/signup/terms';
+import Login from './screens/login';
+import Signup from './screens/signup';
+import Identity from './screens/signup/identity';
+import Personal from './screens/signup/personal';
+import Terms from './screens/signup/terms';
 
 const Stack = createNativeStackNavigator()
 
@@ -32,10 +32,10 @@ export default function App() {
             name="login" 
             component={Login}>
           </Stack.Screen>
-          <Stack.Screen name="signup" component={Signup} options={{ title: 'Nationality' }}></Stack.Screen>
-          <Stack.Screen name="terms" component={Terms} options={{ title: 'Terms' }}></Stack.Screen>
-          <Stack.Screen name="identity" component={Identity} options={{ title: 'Identity' }}></Stack.Screen>
-          <Stack.Screen name="personal" component={Personal} options={{ title: 'Personal Data' }}></Stack.Screen>
+          <Stack.Screen name="signup" component={Signup} options={{ title: 'Kewarganegaraaan' }}></Stack.Screen>
+          <Stack.Screen name="terms" component={Terms} options={{ title: 'Ketentuan Pengguna' }}></Stack.Screen>
+          <Stack.Screen name="identity" component={Identity} options={{ title: 'Identitas' }}></Stack.Screen>
+          <Stack.Screen name="personal" component={Personal} options={{ title: 'Data Pribadi' }}></Stack.Screen>
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

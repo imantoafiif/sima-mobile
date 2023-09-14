@@ -20,7 +20,7 @@ const Identity = ({ navigation }) => {
     const handleDocumentSelection = async () => {
         try {
             const result = await DocumentPicker.getDocumentAsync({
-                type: '*/*',
+                type: 'image/*',
             });
             setSelectedFile(result)
             // console.log(
