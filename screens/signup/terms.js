@@ -94,14 +94,14 @@ const styles = StyleSheet.create({
     kewarganegaraan: {
         width: '100%',
         textAlign: 'center',
-        fontWeight: 700,
+        fontWeight: '700',
         fontSize: 18,
         marginTop: 30,
     },
 
     redaksi: {
         fontStyle: 'normal',
-        fontWeight: 400,
+        fontWeight: '400',
         fontSize: 16,
         textAlign: 'center',
         color: '#6B778C',
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     button_label: {
         textAlign: 'center',
         color: 'white',
-        fontWeight: 700,
+        fontWeight: '700',
     },
 
     button: {
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     },
 
     redaksi_accept_terms: {
-        fontWeight: 600,
+        fontWeight: '600',
     },
 
     bold_red: {

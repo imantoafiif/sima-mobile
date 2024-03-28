@@ -9,6 +9,8 @@ import Signup from './screens/signup';
 import Identity from './screens/signup/identity';
 import Personal from './screens/signup/personal';
 import Terms from './screens/signup/terms';
+import Institution from './screens/signup/institution';
+import Contact from './screens/signup/contact';
 
 const Stack = createNativeStackNavigator()
 
@@ -32,10 +34,12 @@ export default function App() {
             name="login" 
             component={Login}>
           </Stack.Screen>
-          <Stack.Screen name="signup" component={Signup} options={{ title: 'Kewarganegaraaan' }}></Stack.Screen>
+          <Stack.Screen name="signup" component={Signup} options={{ title: 'Kewarganegaraan' }}></Stack.Screen>
           <Stack.Screen name="terms" component={Terms} options={{ title: 'Ketentuan Pengguna' }}></Stack.Screen>
           <Stack.Screen name="identity" component={Identity} options={{ title: 'Identitas' }}></Stack.Screen>
           <Stack.Screen name="personal" component={Personal} options={{ title: 'Data Pribadi' }}></Stack.Screen>
+          <Stack.Screen name="institution" component={Institution} options={{ title: 'Data Institusi' }}></Stack.Screen>
+          <Stack.Screen name="contact" component={Contact} options={{ title: 'Kontak Aktif' }}></Stack.Screen>
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

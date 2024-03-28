@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Image, Platform, SafeAreaView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
 import * as DocumentPicker from 'expo-document-picker';
 import { atom, useSetAtom } from "jotai";
+import Toast from 'react-native-toast-message';
 
 export const identityAtom = atom(null)
 const platform = Platform.OS
@@ -19,10 +20,12 @@ const Identity = ({ navigation }) => {
 
     const handleDocumentSelection = async () => {
         try {
+            
             const result = await DocumentPicker.getDocumentAsync({
                 type: 'image/*',
             });
             setSelectedFile(result)
+            console.log(selectedFile.assets[0].uri)
             // console.log(
             //   result.uri,
             //   result.type, // mime type
@@ -32,7 +35,6 @@ const Identity = ({ navigation }) => {
             } catch (err) {
             if (DocumentPicker.isCancel(err)) {
                 setSelectedFile(null)
-                console.warn(err)
             } else {
                 console.warn(err)
             }
@@ -40,9 +42,6 @@ const Identity = ({ navigation }) => {
     };
 
     return (
-        // <SafeAreaView style={styles.container}>
-            
-        // </SafeAreaView>
         <View style={styles.hero}>
             <Image
                 source={require('../../assets/sima/logosima.png')}/>
@@ -50,10 +49,6 @@ const Identity = ({ navigation }) => {
             <Text style={styles.redaksi}>
                 Dokumen ini diperlukan untuk memverifikasi identitas anda. Gunakan KTP asli atau Surat Keterangan Kependudukan
             </Text>
-            {/* <Button
-                onPress={handleDocumentSelection} 
-                title="presses"/>
-            <Text>{ selectedFile?.name }</Text> */}
             <View style={styles.control_container}>
                 <View style={styles.document_container}>
                     <TouchableWithoutFeedback
@@ -64,8 +59,8 @@ const Identity = ({ navigation }) => {
                                     <View style={styles.ktp_container}>
                                         <Image
                                             style={styles.im_template}  
-                                            source={{ uri: selectedFile.uri }}/>
-                                        <Text style={styles.redaksi_ktp}>{ selectedFile.name }</Text>
+                                            source={{ uri: selectedFile.assets[0].uri }}/>
+                                        <Text style={styles.redaksi_ktp}>{ selectedFile.assets[0].name }</Text>
                                     </View>
                                 ) : (
                                     <View style={styles.ktp_container}>
@@ -76,30 +71,27 @@ const Identity = ({ navigation }) => {
                             }
                         </View>
                     </TouchableWithoutFeedback>
-                    <View style={styles.tip}>
-                        <Text style={styles.redaksi_tip}>
-                            Gambar identitas & pas foto harus terbaca jelas
-                            (Gambar tidak kabur, rusak, atau terkena pantulan cahaya)
-                            {/* { '\n' }
-                            { '\n' }
-                            Foto identitas adalah dokumen asli, bukan dokumen fotokopi
-                            { '\n' }
-                            { '\n' }
-                            Identitas yang terdaftar adalah data yang masih berlaku */}
-                        </Text>
+                    <View style={styles.tip_container}>
+                        <View style={styles.tip}>
+                            <Text style={styles.redaksi_tip}>
+                                Gambar identitas & pas foto harus terbaca jelas
+                                (Gambar tidak kabur, rusak, atau terkena pantulan cahaya)
+                            </Text>
+                        </View>
+                        <View style={styles.tip}>
+                            <Text style={styles.redaksi_tip}>
+                                Foto identitas adalah dokumen asli, bukan dokumen fotokopi
+                            </Text>
+                        </View>
+                        <View style={styles.tip}>
+                            <Text style={styles.redaksi_tip}>
+                                Identitas yang terdaftar adalah data yang masih berlaku
+                            </Text>
+                        </View>
                     </View>
-                    {/* <View style={styles.tip}>
-                        <Text style={styles.redaksi_tip}>
-                            Foto identitas adalah dokumen asli, bukan dokumen fotokopi
-                        </Text>
-                    </View>
-                    <View style={styles.tip}>
-                        <Text style={styles.redaksi_tip}>
-                            Identitas yang terdaftar adalah data yang masih berlaku
-                        </Text>
-                    </View> */}
                 </View>
                 <TouchableOpacity
+                    disabled={!selectedFile}
                     onPress={() => navigation.navigate('personal')}
                     style={selectedFile ? styles.button : [styles.button, styles.button_disabled]}>
                     <Text style={styles.button_label}>Lanjutkan</Text>
@@ -134,14 +126,19 @@ const styles = StyleSheet.create({
     kewarganegaraan: {
         width: '100%',
         textAlign: 'center',
-        fontWeight: 700,
+        fontWeight: '700',
         fontSize: 18,
         marginTop: 30,
+    },
+    
+    tip_container: {
+        flex: 1,
+        gap: 8,
     },
 
     redaksi: {
         fontStyle: 'normal',
-        fontWeight: 400,
+        fontWeight: '400',
         fontSize: 16,
         textAlign: 'center',
         color: '#6B778C',
@@ -181,7 +178,7 @@ const styles = StyleSheet.create({
     button_label: {
         textAlign: 'center',
         color: 'white',
-        fontWeight: 700,
+        fontWeight: '700',
     },
 
     document_container: {
@@ -203,7 +200,7 @@ const styles = StyleSheet.create({
         marginTop: 6,
         color: '#455154',
         fontSize: 12,
-        fontWeight: 600,
+        fontWeight: '600',
     },
 
     redaksi_bold: {

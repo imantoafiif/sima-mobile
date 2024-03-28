@@ -28,38 +28,7 @@ const Signup = ({ navigation }) => {
     ])
 
     return (
-        // <SafeAreaView style={styles.container}>
-        //     <View style={styles.hero}>
-        //         <Image
-        //           source={require('../../assets/sima/logosima.png')}/>
-        //         <Text style={styles.kewarganegaraan}>Pilih Kewarganegaraan</Text>
-        //         <Text style={styles.redaksi}>
-        //             Silahkan pilih negara anda untuk menentukan ID dokumen mana yang akan dipindai. ID dokumen diperlukan untuk memvalidasi identitas anda. 
-        //         </Text>
-        //         <View style={styles.control_container}>
-        //             <DropDownPicker
-        //                 placeholderStyle={{
-        //                     color: '#d3d3d3'
-        //                 }}
-        //                 placeholder="Pilih Kewarganegaraan"
-        //                 style={styles.input}
-        //                 open={open}
-        //                 value={value}
-        //                 items={items}
-        //                 setOpen={setOpen}
-        //                 setValue={setValue}
-        //                 setItems={setItems}
-        //                 onSelectItem={item => setCountry(item.value)}
-        //             />
-        //             <TouchableOpacity 
-        //                 disabled={!value}
-        //                 onPress={() => navigation.push('terms')}
-        //                 style={value ? styles.button : [styles.button, styles.button_disabled]}>
-        //                 <Text style={styles.button_label}>Lanjutkan</Text>
-        //             </TouchableOpacity>
-        //         </View>
-        //     </View>
-        // </SafeAreaView>
+        // <SafeAreaView style={styles.hero}>
         <View style={styles.hero}>
             <Image
                 source={require('../../assets/sima/logosima.png')}/>
@@ -90,6 +59,7 @@ const Signup = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
         </View>
+        // {/* </SafeAreaView> */}
     )
 }
 
@@ -100,7 +70,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        backgroundColor: 'gold',
     },
 
     hero: {
@@ -112,6 +81,7 @@ const styles = StyleSheet.create({
         paddingLeft: 24,
         paddingRight: 24,
         paddingVertical: (platform === 'ios' ? '10%' : '20%'),
+        // paddingVertical: 40,
         backgroundColor: 'white',
         // backgroundColor: 'brown',
     },
@@ -119,14 +89,14 @@ const styles = StyleSheet.create({
     kewarganegaraan: {
         width: '100%',
         textAlign: 'center',
-        fontWeight: 700,
+        fontWeight: '700',
         fontSize: 18,
         marginTop: 30,
     },
 
     redaksi: {
         fontStyle: 'normal',
-        fontWeight: 400,
+        fontWeight: '400',
         fontSize: 16,
         textAlign: 'center',
         color: '#6B778C',
@@ -142,7 +112,7 @@ const styles = StyleSheet.create({
     button_label: {
         textAlign: 'center',
         color: 'white',
-        fontWeight: 700,
+        fontWeight: '700',
     },
 
     control_container: {

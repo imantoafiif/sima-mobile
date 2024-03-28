@@ -6,7 +6,7 @@ import DropDownPicker from "react-native-dropdown-picker"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from "react-native";
 
-const Institution = ({ navigation }) => {
+const Personal = ({ navigation }) => {
 
     const StatusBarHeight = StatusBar.currentHeight || 0
     const [KTP, setKTP] = useState(null)
@@ -40,7 +40,7 @@ const Institution = ({ navigation }) => {
                         return <Text style={{ padding: 12 }}>skajasj</Text>
                     })
                 } */}
-                <Text style={styles.title}>Masukkan Data Diri</Text>
+                <Text style={styles.title}>Masukkan Kontak Aktif</Text>
                 {/* {
                     [1,1,1,1,1,1,1,1,1].map(item => {
                         return (
@@ -56,7 +56,7 @@ const Institution = ({ navigation }) => {
                     })
                 } */}
             <ScrollView>
-                <Text style={styles.subtitle}>Masukkan data identitas anda berdasarkan KTP atau Surat Keterangan Kependudukan. Masukkan juga email dan nomor telepon yang aktif</Text>
+                <Text style={styles.subtitle}>Masukkan data kontak Aktif Anda yang sedang digunakan</Text>
                 <View style={styles.inputContainer}>
                     <Text style={{ fontWeight: 500 }}>
                         Nama Lengkap <Text style={{ color: '#E81255' }}>*</Text>
@@ -67,21 +67,6 @@ const Institution = ({ navigation }) => {
                 </View>
                 <View style={styles.inputContainer}>
                     <Text style={{ fontWeight: 500 }}>
-                        Jenis Kelamin <Text style={{ color: '#E81255' }}>*</Text>
-                    </Text>
-                    <View style={styles.inputSelect}>
-                        <Picker
-                            onValueChange={(value) => console.log(value)}
-                            items={[
-                                { label: 'Football', value: 'football' },
-                                { label: 'Baseball', value: 'baseball' },
-                                { label: 'Hockey', value: 'hockey' },
-                            ]}
-                        />
-                    </View>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Text style={{ fontWeight: 500 }}>
                         Nomor Induk Kependudukan <Text style={{ color: '#E81255' }}>*</Text>
                     </Text>
                     <TextInput    
@@ -89,66 +74,12 @@ const Institution = ({ navigation }) => {
                             const ktp_ = v.replace(/[^0-9]/g, '')
                             setKTP(ktp_)
                         }}
-                        keyboardType="numeric"
                         value={KTP}
                         maxLength={16}
                         placeholder="Nomor Induk Kependudukan"
                         style={styles.input}/>
                 </View>
-                <View style={styles.inputContainer}>
-                    <Text style={{ fontWeight: 500 }}>
-                        Tempat Lahir <Text style={{ color: '#E81255' }}>*</Text>
-                    </Text>
-                    <TextInput    
-                        placeholder="Tempat Lahir"
-                        style={styles.input}/>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Text style={{ fontWeight: 500 }}>
-                        Tanggal Lahir <Text style={{ color: '#E81255' }}>*</Text>
-                    </Text>
-                    <TextInput    
-                        placeholder="Tanggal Lahir"
-                        style={styles.input}/>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Text style={{ fontWeight: 500 }}>
-                        Provinsi <Text style={{ color: '#E81255' }}>*</Text>
-                    </Text>
-                    <View style={styles.inputSelect}>
-                        <Picker
-                            onValueChange={(value) => console.log(value)}
-                            items={[
-                                { label: 'Football', value: 'football' },
-                                { label: 'Baseball', value: 'baseball' },
-                                { label: 'Hockey', value: 'hockey' },
-                            ]}
-                        />
-                    </View>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Text style={{ fontWeight: 500 }}>
-                        Kota/Kabupaten <Text style={{ color: '#E81255' }}>*</Text>
-                    </Text>
-                    <View style={styles.inputSelect}>
-                        <Picker
-                            onValueChange={(value) => console.log(value)}
-                            items={[
-                                { label: 'Football', value: 'football' },
-                                { label: 'Baseball', value: 'baseball' },
-                                { label: 'Hockey', value: 'hockey' },
-                            ]}
-                        />
-                    </View>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Text style={{ fontWeight: 500 }}>
-                        Alamat Lengkap <Text style={{ color: '#E81255' }}>*</Text>
-                    </Text>
-                    <TextInput 
-                        placeholder="Alamat Lengkap"
-                        style={styles.input}/>
-                </View>
+                
             </ScrollView>
             {/* <View style={styles.warning}>
                 <Icon name="exclamation-circle" size={16} style={{ color: '#6B778C' }}/>
@@ -157,12 +88,10 @@ const Institution = ({ navigation }) => {
             <View style={styles.tip}>
                 <Icon name="exclamation-circle" size={16} style={{ color: '#6B778C' }}/>
                 <Text style={styles.redaksi_tip}>
-                    Pastikan data diri yang telah diinput sudah benar dan sesuai dengan identitas yang dimiliki
+                    Pastikan data diri yang telah diinput sudah benar dan sesuai dengan institusi yang dimiliki
                 </Text>
             </View>
-            <TouchableOpacity 
-                style={styles.button}
-                onPress={() => navigation.navigate('institution')}>
+            <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonLabel}>Lanjutkan</Text>
             </TouchableOpacity>
         </SafeAreaView> 
@@ -246,4 +175,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default Institution
+export default Personal

@@ -1,7 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const Login = ({ navigation }) => {
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.hero}>
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
     text_masuk: {
       textAlign: 'center',
       color: 'white',
-      fontWeight: 700,
+      fontWeight: '700',
     },
     button_container: {
       backgroundColor: '#E81255',
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     input_hint: {
       width: '100%',
       textAlign: 'left',
-      fontWeight: 600,
+      fontWeight: '600',
       marginBottom: 12,
     },
     input_field: {
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     welcome: {
       width: '100%',
       textAlign: 'center',
-      fontWeight: 700,
+      fontWeight: '700',
       fontSize: 24,
       marginTop: 32,
       marginBottom: 32,
